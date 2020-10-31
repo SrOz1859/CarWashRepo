@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" href="{% static 'img/4008C0683.ico' type='image/x-icon' %}">
+    {% block estilos %}
+    
+    {% endblock estilos %}
+</head>
+<body>
+    <div id="contenedor">
+        <div id="header">
+            <div><h2> AutoLavado Mi pana Miguel</h2></div>
+                <nav>
+                    <a href="{% url 'IND' %}">INICIO </a>
+                    <a href="{% url 'GAL' %}"> GALERIA</a>
+                    <a href="{% url 'LOC' %}">QUIENES SOMOS</a>
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'INS' %}"> INSUMOS </a>
+                        <a href="{% url 'ADM' %}">ADM INSUMOS</a>
+                        <a href="{% url 'LOGOUT' %}" >Cerrar Sesión</a>
+                        <a href="">Bienvenido: {{user.first_name}} {{user.last_name}}</a>
+                    {% else %}
+                        <a href="{% url 'FORM' %}"> REGISTRATE </a>
+                        <a href="{% url 'LOGIN' %}">INICIAR SESIÓN</a>
+                    {% endif %}
+                </nav>
+            <div><h3 class="eslogan"> "QUEREMOS QUE BRILLES COMO TU AUTO" </h3></div>
+        </div>       
+        {% block contenido %}
+        
+        {% endblock contenido %}
+        <div id="footer">
+            <style>A { text-decoration: none; }</style>
+            <style> A { text-decoration-color: none;}</style>
+            <div>
+                <nav>
+                    <a href="{% url 'IND' %}">INICIO </a>
+                    <a href="{% url 'GAL' %}"> GALERIA</a>
+                    <a href="{% url 'LOC' %}">QUIENES SOMOS</a>
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'INS' %}"> INSUMOS </a>
+                        <a href="{% url 'ADM' %}">ADM INSUMOS</a>
+                        <a href="{% url 'LOGOUT' %}" >Cerrar Sesión</a>
+                        <a href="">Bienvenido: {{user.first_name}} {{user.last_name}}</a>
+                    {% else %}
+                        <a href="{% url 'FORM' %}"> REGISTRATE </a>
+                        <a href="{% url 'LOGIN' %}">INICIAR SESIÓN</a>
+                    {% endif %}
+                </nav>
+            </div>
+            <div id="contactos">
+                    <div><h2>CONTACTANOS</h2></div>
+                    <div>
+                        <h2>Nuestro Correo:</h2>
+                        <h3>autopanamiguel@gmail.com</h3>
+                        <h2>Telefono De Contacto:</h2>
+                        <h3>+569 4521 4563</h3>
+                    </div>
+            </div>
+            <div id="redes">
+                <div><h2>REDES SOCIALES</h2></div>
+                    <h2>Facebook:</h2>
+                    <h3>AutolavadoPanaMiguel</h3>
+                    <h2>Instragram:</h2>
+                    <h3>@AutoPana_Miguel</h3>
+            </div>
+        </div>
+        {% block js %}
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+        {% endblock js %}
+    </div>
+</body>
+</html>

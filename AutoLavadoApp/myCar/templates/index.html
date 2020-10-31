@@ -1,0 +1,124 @@
+{% extends "plantilla.html" %}
+{% load static %}
+
+{% block contenido %}
+    <div id="contenido">
+        <div id="section">
+            <div>
+                <h1>REALIZAMOS LAVADOS A TODO TIPO DE VEHICULOS</h1>
+            </div>
+            <div>
+                <div>
+                    <h2>AUTOMOVILES</h2>
+                </div>
+                <div id="sectimg1">
+                    <div><img class="imgindex" src="{% static 'img/car_car_washes-4330.jpg!d.jpg' %}" alt=""> </div>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <h2>CAMIONETAS</h2>
+                </div>
+                <div id="sectimg2">
+                    <div><img class="imgindex" src="{% static 'img/camionetas.jpg' %}" alt=""></div>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <h2>MOTOCICLETAS</h2>
+                </div>
+                <div id="sectimg3">
+                    <div> <img class="imgindex" src="{% static 'img/moto-yamaha-yzf-r1_1920x1200_xtrafondos.com.jpg' %}" alt=""></div>
+                </div>
+            </div>
+        </div>
+        <div id="productos">
+            <div id="producto2">
+                <div>
+                    <h2 id="subtitulolocal2" >SERVICIO BASICO :</h2>
+                </div>
+                <div id="parrafo-produc2"> <p> Lavado Completo</p></div>
+                <div id="parrafo-produc2"> <p> Limpieza de Vidrios</p></div>
+                <div id="parrafo-produc2"> <p> Enserado</p></div>
+                <div id="parrafo-produc2"> <p>Relleno de aire</p></div>
+                <div id="parrafo-produc2"><p>Valor: $8.000</p></div>
+            </div>
+            <div id="producto1">
+                <div>
+                    <h2 id="subtitulolocal" > SERVICIO DELUXE :</h2>
+                </div>
+                <div id="parrafo-produc"> <p> Lavado Completo</p></div>
+                <div id="parrafo-produc"> <p> Limpieza de Vidrios</p></div>
+                <div id="parrafo-produc"> <p> Enserado</p></div>
+                <div id="parrafo-produc"> <p>Limpieza de llantas</p></div>
+                <div id="parrafo-produc"> <p>Relleno de aire</p></div>
+                <div id="parrafo-produc"><p>Ajuste de neumaticos </p> </div>
+                <div id="parrafo-produc"><p> Cepillado</p> </div>
+                <div id="parrafo-produc"><p>Aspiramiento de interior</p> </div> 
+                <div id="parrafo-produc"><p>Valor: $15.000</p></div>
+            </div>
+                <!--PRODUCTOS ADICIONALES-->
+            <div id="productos-adi">
+                <div>
+                    <h3 class="subtitulolocal"> PRUEBA NUESTROS SERVICIOS ADICIONALES</h3>
+                </div>
+                <div id="producto">
+                    <h1><img class="img" src="{%static  'img/iconos-pack1/png/030-clipboard.png' %}" alt=""></h1>
+                    <p> Chequeo tecnico</p>
+                </div>
+                <div id="producto">
+                    <h1><img id="img" src="{%static  'img/iconos-pack1/png/021-seat.png' %}" alt=""></h1>
+                    <p> Ajuste de seguridad</p>
+                </div>
+                <div id="producto">
+                    <h1><img id="img" src="{% static 'img/iconos-pack1/png/018-car service.png' %}" alt=""></h1>
+                    <p> Cambio de aceite</p>
+                </div>
+                <div id="producto">
+                    <h1><img id="img" src="{% static 'img/iconos-pack2/png/044-polisher.png' %}" alt=""></h1>
+                    <p> Pulido </p>
+                </div>
+                <div id="producto">
+                    <h1><img id="img" src="{% static 'img/iconos-pack2/png/004-air-freshener.png' %}" alt=""></h1>
+                    <p> Desodorantes y accesorios</p>
+                </div>
+                <div id="producto">
+                    <h1><img src="{%static  'img/iconos-pack2/png/012-soap.png' %}" alt=""></h1>
+                    <p>Autocongelantes y refrigerantes</p>
+                </div>
+                <div id="producto">
+                    <h1><img src="{% static 'img/iconos-pack2/png/023-engine.png' %}" alt=""></h1>
+                    <p>Mantenimiento de motor</p>
+                </div>
+                <div id="producto">
+                    <h1><img src="{% static 'img/iconos-pack2/png/033-headlight.png' %}" alt=""></h1>
+                    <p>Cuidado de luces</p>
+                </div>
+            </div>
+        </div>
+        <!--TERMINO DE SECTOR DE PRODUCTOS-->
+        <div id="slider-index" class="slider-index">
+            <h3 class="subtitulo"> NUESTROS CLIENTES DICEN : </h3>
+            <ul>
+            {% for item in sli %}
+                <li> <img src="{{item.Imagen.url}}" alt="">
+                    <h1> {{item.nombre}} Dice :</h1>
+                    <p>{{item.descripcion}}</p></li>
+            {% endfor %}
+                <li> <img src="{% static 'img/personas/4008C0683.jpg' %}" alt="">
+                    <h1> Brayan Felipe Sanchez Dice :</h1>
+                    <p>ES EL MEJOR SERVICIO QUE E PROBADO , CUIDADO Y SERVICIO PERFERCTO PARA TU AUTO </p></li>
+                <li> <img src="{% static 'img/personas/blondes-women-blue-eyes-actress-lips-singer-candice-accola-1200x1500-people-actresses-hd-art-wallpaper-preview.jpg' %}" alt="">
+                    <h1>Sofia Solarí Smith Dice :</h1>
+                    <p>SERVICIO REALMENTE ECONOMICO PARA TODO LO QUE OFRECE 100% RECOMENDANDO, TIENEN QUE PASA POR ESTE AUTOLAVADO!</p> </li>
+                <li><img src="{% static 'img/personas/IMG-20171209-WA0007.jpg' %}" alt="">
+                    <h1>Emilio Henrique Lagos Dice :</h1>
+                    <p>lAVARON MI AUTO DE MANERA MARAVILLOSA , LA ATENCION FUE BASTANTE AGRADABLE Y SUS PRODUCTOS COMO SERVICIO SON DE LA MEJOR CALIDAD </p> </li>
+                <li> <img src="{% static 'img/personas/woman-3083390__340.jpg' %}" alt="">
+                    <h1>Vania Jasinta Risopatrón Dice :</h1> 
+                    <p>OSEA! DEMASIADA BUENA LA ATENCION TE CACHAY? POR SUPER POCAS LUCAS TE DEJAN EL AUTO DE LO MAS TOP, LISTA PARA IR A TU CASA EN BAHIA INGLESA </p></li>         
+            </ul>
+        </div>
+    </div>
+{% endblock contenido %}
+

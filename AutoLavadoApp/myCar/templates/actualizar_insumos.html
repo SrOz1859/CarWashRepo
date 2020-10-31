@@ -1,0 +1,45 @@
+{% extends "plantilla.html" %}
+{% load static %}
+
+{% block contenido %}
+<div id="contenedor-formulario">
+    <div id="contenido">
+        <div id="formulario-insumos">
+            <script src="{% static 'js/validaciones.js' %}"></script>
+            <script src="{% static 'js/cliente.js' %}"></script>
+            <script src="{% static 'js/proceso.js' %}"></script>
+            <form action="{% url 'ACTMAS' %}" onsubmit="return ValidarTodo()" method="POST" class="formulario-registro">
+            {% csrf_token %}
+                <table>
+                    <div class="form-header">
+                        <h2 class="form-tit">Actualizacion de Insumos </h2>
+                    </div>
+                    <tr>
+                        <td>Nombre :</td>
+                        <td> <input class="form-input" value="{{ins.nombre}}" type="text" name="txtnom" id="txtnom" minlength="3" maxlength="120" required></td>
+                    </tr>
+                    <tr>
+                        <td> Precio:</td>
+                        <td>
+                            <input class="form-input" value="{{ins.precio}}" type="number" name="txtprecio" id="txtprecio" minlength="1" required></td>
+                    </tr>
+                    <tr>
+                        <td> Descripcion:</td>
+                        <td>
+                            <input class="form-input" value="{{ins.descripcion}}" type="text" name="txtdesc" id="txtdesc" minlength="3" maxlength="200"></td>
+                    </tr> 
+                    <tr>
+                        <td> Stock:</td>
+                        <td><input class="form-input" value="{{ins.stock}}" type="text" name="txtstock" id="txtstock" minlength="3" maxlength="200"></td>
+                    </tr>
+                    <input type="submit" values="Actualizar">                 
+                </table>
+            </form>
+        </div>
+        <div id="alert">
+            <h1>{{msg}}</h1>
+        </div>
+    </div>
+</div>
+{% endblock contenido %}
+    
