@@ -828,7 +828,7 @@
         
     }
     #slider-index{
-        height: 25%;
+        height: 35%;
         overflow: hidden;
         padding: 10px;
     }
@@ -848,7 +848,7 @@
         padding: 10px;
         margin-top: 20px;
         margin-left: 20px;
-        font-size: xx-large;
+        font-size: x-large;
         font-style: oblique;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
