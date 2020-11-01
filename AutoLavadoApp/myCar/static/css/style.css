@@ -31,19 +31,21 @@
     font: x-large;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-/*ESTILO PARA FORMULARIO*/
-.formulario-registro{
-    display: flex;
-    flex-wrap: wrap;
-    
-    background-color: rgba(0,0, 0, .6);
-    margin: auto;
-    padding: 10px;
-    width: 70%;
-    height: 80%;
-    margin-top: 10px;
-    border-radius: 5px;
-}
+
+    /*ESTILO PARA FORMULARIO*/
+    .formulario-registro{
+        display: flex;
+        flex-wrap: wrap;
+        
+        background-color: rgba(0,0, 0, .6);
+        margin: auto;
+        padding: 10px;
+        width: 70%;
+        height: 80%;
+        margin-top: 10px;
+        border-radius: 5px;
+    }
+
 .formulario-registro td{
     display: block;
     color: white;
@@ -503,7 +505,19 @@
         float: right;
         align-items: center;      
     }
-
+    /*ESTILO PARA FORMULARIO*/
+    #formulario-registro{
+        display: flex;
+        flex-wrap: wrap;
+        
+        background-color: rgba(0,0, 0, .6);
+        margin: auto;
+        padding: 10px;
+        width: 70%;
+        height: 80%;
+        margin-top: 10px;
+        border-radius: 5px;
+    }
     #formulario{
         height: 50%;
         background-image: url("../img/Salon-de-Ginebra-2018-18.jpg");
@@ -609,7 +623,7 @@
         background-color: white;
     }
     #contenedor-formulario{
-        height: 1500px;
+        height: 600px;
     }
     /*TERMINO DE ESTILO PARA CONTENEDORES*/
     #header{
@@ -676,6 +690,11 @@
     /*TERMINO DE ESTILO PARA HEADER*/
     #contenido{
         height:80%;
+        padding: 10px;
+        background-color :white;
+    }
+    #contenido-adm{
+        height: 37%;
         padding: 10px;
         background-color :white;
     }   
@@ -983,8 +1002,30 @@
         float: left; 
         text-align: center; 
     }
+    /*ESTILO PARA FORMULARIO*/
+    #formulario-registro{
+        display: flex;
+        flex-wrap: wrap;
+        
+        background-color: rgba(0,0, 0, .6);
+        margin: auto;
+        padding: 10px;
+        width: 60%;
+        height: 80%;
+        margin-top: 10px;
+        border-radius: 5px;
+    }
     #formulario{
-        height: 60%;
+        height: 100%;
+        background-image: url("../img/Salon-de-Ginebra-2018-18.jpg");
+        padding: 10px;
+        background-size: cover;
+    }
+    #formulario-login{
+        display: flex;
+        flex-wrap: wrap;
+        background-color: black;
+        height: 100%;
         background-image: url("../img/Salon-de-Ginebra-2018-18.jpg");
         padding: 10px;
         background-size: cover;
@@ -1007,7 +1048,8 @@
         width: 100%;
         display: flex;
         flex-wrap: wrap;
-        align-items: center;  
+        align-items: center;
+        background-color: black;
     } 
     #footer nav a {
         background: brown; 
@@ -1460,6 +1502,19 @@
         padding: 10px;
         float: left; 
         text-align: center; 
+    }
+    /*ESTILO PARA FORMULARIO*/
+    #formulario-registro{
+        display: flex;
+        flex-wrap: wrap;
+        
+        background-color: rgba(0,0, 0, .6);
+        margin: auto;
+        padding: 10px;
+        width: 70%;
+        height: 80%;
+        margin-top: 10px;
+        border-radius: 5px;
     }
     #formulario{
         height: 60%;
