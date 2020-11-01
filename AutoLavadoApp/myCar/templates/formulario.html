@@ -33,13 +33,10 @@
             <script src="js/validaciones.js"></script>
             <script src="js/cliente.js"></script>
             <script src="js/proceso.js"></script>
-            <div><h1 class="subtitulo"> REGISTRATE AQUI </h1></div>
-                <form action="{% url 'FORM' %}" onsubmit="return ValidarTodo()" method="POST" class="formulario-registro">
+            <div><h1 id="subtitulo"> REGISTRATE AQUI </h1></div>
+                <form action="{% url 'FORM' %}" onsubmit="return ValidarTodo()" method="POST" id="formulario-registro">
                     {% csrf_token %}
                     <table>
-                        <div class="form-header">
-                            <h2 class="form-tit">Formulario de Registro</h2>
-                        </div>
                         <tr>
                             <td> Nombre:</td>
                             <td><input type="text" name="txtnombre" id="txtnombre" minlength="3" maxlength="80"></td>
@@ -94,23 +91,23 @@
                         <a href="{% url 'FORM' %}"> REGISTRATE </a>
                         <a href="{% url 'LOGIN' %}">INICIAR SESIÓN</a>
                     {% endif %}
+                    <div id="contactos">
+                        <div><h2>CONTACTANOS</h2></div>
+                        <div>
+                            <h2>Nuestro Correo:</h2>
+                            <h3>autopanamiguel@gmail.com</h3>
+                            <h2>Telefono De Contacto:</h2>
+                            <h3>+569 4521 4563</h3>
+                        </div>
+                </div>
+                <div id="redes">
+                    <div><h2>REDES SOCIALES</h2></div>
+                        <h2>Facebook:</h2>
+                        <h3>AutolavadoPanaMiguel</h3>
+                        <h2>Instragram:</h2>
+                        <h3>@AutoPana_Miguel</h3>
+                </div>
                 </nav>
-            </div>
-            <div id="contactos">
-                    <div><h2>CONTACTANOS</h2></div>
-                    <div>
-                        <h2>Nuestro Correo:</h2>
-                        <h3>autopanamiguel@gmail.com</h3>
-                        <h2>Telefono De Contacto:</h2>
-                        <h3>+569 4521 4563</h3>
-                    </div>
-            </div>
-            <div id="redes">
-                <div><h2>REDES SOCIALES</h2></div>
-                    <h2>Facebook:</h2>
-                    <h3>AutolavadoPanaMiguel</h3>
-                    <h2>Instragram:</h2>
-                    <h3>@AutoPana_Miguel</h3>
             </div>
         </div>
     </div>

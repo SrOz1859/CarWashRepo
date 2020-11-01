@@ -31,19 +31,21 @@
     font: x-large;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-/*ESTILO PARA FORMULARIO*/
-.formulario-registro{
-    display: flex;
-    flex-wrap: wrap;
 
-    background-color: rgba(0,0, 0, .6);
-    margin: auto;
-    padding: 10px;
-    width: 70%;
-    height: 80%;
-    margin-top: 10px;
-    border-radius: 5px;
-}
+    /*ESTILO PARA FORMULARIO*/
+    .formulario-registro{
+        display: flex;
+        flex-wrap: wrap;
+        
+        background-color: rgba(0,0, 0, .6);
+        margin: auto;
+        padding: 10px;
+        width: 70%;
+        height: 80%;
+        margin-top: 10px;
+        border-radius: 5px;
+    }
+
 .formulario-registro td{
     display: block;
     color: white;
@@ -53,13 +55,15 @@
     float: left;
 }
 .form-header{
+    float: left;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-style: italic;
     font-size: xx-large;
     color: white;
-    margin-left: 400px;
+    margin-left: 80px;
     margin-top: 80px;
     height: 5%;
+    text-align: center;
 
 }
 .formulario-registro .form_input ,td{
@@ -501,7 +505,19 @@
         float: right;
         align-items: center;      
     }
-
+    /*ESTILO PARA FORMULARIO*/
+    #formulario-registro{
+        display: flex;
+        flex-wrap: wrap;
+        
+        background-color: rgba(0,0, 0, .6);
+        margin: auto;
+        padding: 10px;
+        width: 70%;
+        height: 80%;
+        margin-top: 10px;
+        border-radius: 5px;
+    }
     #formulario{
         height: 50%;
         background-image: url("../img/Salon-de-Ginebra-2018-18.jpg");
@@ -607,12 +623,12 @@
         background-color: white;
     }
     #contenedor-formulario{
-        height: 1500px;
+        height: 600px;
     }
     /*TERMINO DE ESTILO PARA CONTENEDORES*/
     #header{
         background-color: black;
-        width: 99%;
+        width: 100%;
         height: 10%;
         margin: auto;
         padding: 10px; 
@@ -674,6 +690,11 @@
     /*TERMINO DE ESTILO PARA HEADER*/
     #contenido{
         height:80%;
+        padding: 10px;
+        background-color :white;
+    }
+    #contenido-adm{
+        height: 37%;
         padding: 10px;
         background-color :white;
     }   
@@ -981,29 +1002,54 @@
         float: left; 
         text-align: center; 
     }
+    /*ESTILO PARA FORMULARIO*/
+    #formulario-registro{
+        display: flex;
+        flex-wrap: wrap;
+        
+        background-color: rgba(0,0, 0, .6);
+        margin: auto;
+        padding: 10px;
+        width: 60%;
+        height: 80%;
+        margin-top: 10px;
+        border-radius: 5px;
+    }
     #formulario{
-        height: 60%;
+        height: 100%;
+        background-image: url("../img/Salon-de-Ginebra-2018-18.jpg");
+        padding: 10px;
+        background-size: cover;
+    }
+    #formulario-login{
+        display: flex;
+        flex-wrap: wrap;
+        background-color: black;
+        height: 100%;
         background-image: url("../img/Salon-de-Ginebra-2018-18.jpg");
         padding: 10px;
         background-size: cover;
     }
     #formulario-insumos{
-        height: 40%;
+        text-align: center;
+        width: 100%;
+        height: 50%;
         background-image: url("../img/PZ-types-motor-oil.jpeg");
         padding: 10px;
-        background-size: auto;
+        background-size: contain;
     }
     #footer{
         background-color: black;
-        height:10%;
-        padding:10px;
-        margin-top:5px;  
+        height: 10%;
+        padding: 10px;
+        margin-top: 5px;  
     }
     #footer nav {
         width: 100%;
         display: flex;
         flex-wrap: wrap;
-        align-items: center;  
+        align-items: center;
+        background-color: black;
     } 
     #footer nav a {
         background: brown; 
@@ -1012,7 +1058,7 @@
         text-decoration: none;
         padding: 10px;
         flex-grow: 1;       
-    } 
+    }
 
     #footer nav a:hover {
         background: #cf7d74;
@@ -1046,8 +1092,11 @@
         font-size: small;
     }
     #contactos h2{
-        padding: 5px;
+        font-size: small;
    
+    }
+    #contactos h3{
+        font-size: small;
     }
     #redes{
         width: 20%;
@@ -1060,7 +1109,12 @@
         font-size: small; 
     } 
     #redes h2{
-        padding: 5px;
+        font-size: small;
+    }
+    #redes h3{
+        display: flex;
+        flex-wrap: wrap;
+        font-size: medium;
     }
     
 }
@@ -1448,6 +1502,19 @@
         padding: 10px;
         float: left; 
         text-align: center; 
+    }
+    /*ESTILO PARA FORMULARIO*/
+    #formulario-registro{
+        display: flex;
+        flex-wrap: wrap;
+        
+        background-color: rgba(0,0, 0, .6);
+        margin: auto;
+        padding: 10px;
+        width: 70%;
+        height: 80%;
+        margin-top: 10px;
+        border-radius: 5px;
     }
     #formulario{
         height: 60%;
