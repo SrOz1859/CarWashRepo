@@ -8,6 +8,41 @@ from django.contrib.auth import authenticate,logout,login as loguin_autent
 #sin estar registrado
 from django.contrib.auth.decorators import login_required,permission_required
 
+import requests
+
+# -------------------------------------------------------------------
+# - 1) importar algunas librerias
+from django.views.decorators.http import require_http_methods
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse, HttpResponseBadRequest
+from django.core import serializers
+import json
+from fcm_django.models import FCMDevice
+# - 2) crear el metodo de recuperacion de Token
+@csrf_exempt
+@require_http_methods(['POST'])
+def guardar_token(request):
+    body = request.body.decode('utf-8')
+    bodyDatos = json.loads(body)
+    token = bodyDatos["token"]
+    # para evitar ingresar 2 veces el mismo token
+    existe = FCMDevice.objects.filter(registration_id=token,active=True)
+    if len(existe)>0:
+        return HttpResponseBadRequest(json.dumps({'mensaje','el token ya esta almacenado'}))
+    dispo = FCMDevice()
+    dispo.registration_id = token
+    dispo.active = True
+    # en caso de estar logeado, ingresar el usuario
+    if request.user.is_authenticated:
+        dispo.user = request.user
+    try:
+        dispo.save()
+        return HttpResponse(json.dumps({'mensaje','grabo token'}))
+    except:
+        return HttpResponseBadRequest(json.dumps({'mensaje','el token no pudo ser almacenado'}))
+
+# -------------------------------------------------------------------
+
 
 def logout_vista(request):
     logout(request)
@@ -31,7 +66,6 @@ def login(request):
 def index(request):
     sli = sliderindex.objects.all()
     return render(request,'index.html',{'sli':sli})
-
 
 def galeria(request):
     imagen = Imagen_emp.objects.all()
@@ -77,13 +111,19 @@ def insumos(request):
         pre = request.POST.get("txtprecio")
         desc = request.POST.get("txtdesc")
         sto = request.POST.get("txtstock")
-        insum = Insumos(
-            nombre = nom,
-            precio = pre,
-            descripcion = desc,
-            stock = sto
+        datos_json = {
+            "nombre":nom,
+            "precio":pre,
+            "descripcion":desc,
+            "stock":sto
+        }
+        response = requests.post("http://localhost:8000/api/insumos/",data=datos_json)
+        dispositivo = FCMDevice.objects.filter(active=True)
+        dispositivo.send_message(
+            title='Nuevo Insumo',
+            body='Se agrego el insumo '+nom,
+            icon='/static/img/iconolavado.png'
         )
-        insum.save()
         return render(request,'insumos.html',{'lista_insumos':insumos,'msg':'Insumo agregado'})
     return render(request,'insumos.html',{'lista_insumos':insumos,'msg':'nn'})
 
@@ -98,7 +138,9 @@ def local(request):
 @permission_required('AutoLavadoApp.delete_Insumos',login_url='/login/')
 @permission_required('AutoLavadoApp.view_Insumos',login_url='/login/')
 def admin_insumos(request):
-    lista_i =Insumos.objects.all()
+    #lista_i =Insumos.objects.all()
+    response = requests.get("http://localhost:8000/api/insumos/")
+    lista_i = response.json()
     return render(request,'admin_insumos.html',{'lista_i':lista_i})
 
 @permission_required('AutoLavadoApp.delete_Insumos',login_url='/login/')
@@ -146,3 +188,18 @@ def actualiza(request):
 
     lista_insumos =Insumos.objects.all() 
     return render(request,'admin_insumos.html',{'msg':mensaje,'lista_i':lista_insumos})
+
+# METODOS API
+def listar_por_precio_api(request):
+    valor = request.POST.get("txtPrecio")
+    ruta ="http://localhost:8000/api/insumos_filtro_precio/"+valor+"/"
+    response = requests.get(ruta)
+    todos_filtro = response.json()
+    return render(request,'admin_insumos.html',{'lista_i':todos_filtro})
+
+def listar_por_nombre_api(request):
+    valor = request.POST.get("txtNombre")
+    ruta ="http://localhost:8000/api/insumos_filtro_nombre/"+valor+"/"
+    response = requests.get(ruta)
+    todos_filtro = response.json()
+    return render(request,'admin_insumos.html',{'lista_i':todos_filtro})

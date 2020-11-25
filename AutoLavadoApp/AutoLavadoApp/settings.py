@@ -28,6 +28,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# LLAVES DE VINCULACION FACEBOOK
+
+SOCIAL_AUTH_FACEBOOK_KEY = '706000826690332'
+SOCIAL_AUTH_FACEBOOK_SECRET = '18e3832889e6c237302c2ff443e9104d'
 
 # Application definition
 
@@ -38,7 +42,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'myCar.apps.MycarConfig',
+    'myCar.apps.MycarConfig', # app web
+    'api.apps.ApiConfig', # servicio api rest
+    'rest_framework', # paquete de adm. de rest fram. django
+    'social_django', # trabajar con facebook
+    'pwa', # service worker
+    'fcm_django',
 ]
 
 MIDDLEWARE = [
@@ -49,6 +58,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'social_django.middleware.SocialAuthExceptionMiddleware', #libreria de apoyo a la conexion facebook
 ]
 
 ROOT_URLCONF = 'AutoLavadoApp.urls'
@@ -64,6 +75,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends', # facebook
+                'social_django.context_processors.login_redirect', # facebook
+
             ],
         },
     },
@@ -118,6 +132,30 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
+
+FCM_DJANGO_SETTINGS = {
+         # default: _('FCM Django')
+        "APP_VERBOSE_NAME": "djangosec007",
+         # Your firebase API KEY
+        "FCM_SERVER_KEY": "AAAAc7srB4U:APA91bHPMgDaem2rUoHR6tgdO6Y0EgFrQ6EOOy--HP0eIzwAthwRDXkv7QgWKKQ1juBkE3-FGUwir0eOUD0Lb7KKkFWvB8cZANciz1xVZNEnzuPosU4dKodwzmVWTNEDCbirQbiyzOni",
+         # true if you want to have only one active device per registered user at a time
+         # default: False
+        "ONE_DEVICE_PER_USER": False,
+         # devices to which notifications cannot be sent,
+         # are deleted upon receiving error response from FCM
+         # default: False
+        "DELETE_INACTIVE_DEVICES": True,
+}
+
+# AUTENTIFICACION FACEBOOK
+AUTHENTICATION_BACKENDS = (
+'social_core.backends.facebook.FacebookOAuth2',
+'django.contrib.auth.backends.ModelBackend',
+)
+
+LOGIN_REDIRECT_URL = '/'
+
+PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'serviceworker.js')
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'

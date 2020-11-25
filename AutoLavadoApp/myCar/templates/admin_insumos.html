@@ -52,6 +52,16 @@
                 }
             </script>
             <button class="btn btn-primary" onclick="ir()">Agregar Insumos</button>
+            <form action="{% url 'LPA' %}" method="post">
+                {% csrf_token %}
+                <input type="text" name="txtPrecio" id="txtPrecio">
+                <input type="submit" value="Filtro Precio">
+            </form>
+            <form action="{% url 'LNA' %}" method="post">
+                {% csrf_token %}
+                <input type="text" name="txtNombre" id="txtNombre">
+                <input type="submit" value="Filtro Nombre">
+            </form>
             <div>
                 <h1>{{msg}}</h1>
             </div>   

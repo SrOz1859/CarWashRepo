@@ -10,6 +10,80 @@
     {% block estilos %}
     
     {% endblock estilos %}
+    {% load pwa %}
+    {% progressive_web_app_meta %}
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <!--<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>-->
+    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-messaging.js"></script>
+
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyCFJJ6G8W3YfW_UjWAirXPT1xplVJiVdlE",
+        authDomain: "djangosec007-aeaf7.firebaseapp.com",
+        databaseURL: "https://djangosec007-aeaf7.firebaseio.com",
+        projectId: "djangosec007-aeaf7",
+        storageBucket: "djangosec007-aeaf7.appspot.com",
+        messagingSenderId: "497061398405",
+        appId: "1:497061398405:web:0e808e00aa388a74e0e6ec"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    
+    ///////////////////////////////////////////////////////////////////////////////
+    let messaging = firebase.messaging();
+    
+    navigator.serviceWorker
+    .register('serviceworker.js')
+    .then(function(register){
+        messaging.useServiceWorker(register);
+        // solicitar autorizacion para notificaciones
+        messaging.requestPermission()
+        .then(function(){
+            console.log("el usuario acepto notificaciones")
+            /// generamos un token
+            return messaging.getToken();
+        })
+        .then(function(token){
+            // mostrar el token
+            console.log(token)
+            //////// grabar el token (enviarlo a view.py) /////////////////////////
+            fetch('guardar-token/',{
+                method:'post',
+                headers: {
+                    'Content-Type':'application/json',
+                    'Accept':'application/json'
+                },
+                body: JSON.stringify({
+                    'token':token
+                })
+            })
+            ///////////////////////////////////////////////////////////////////////
+        })
+        .catch(function(e){
+            console.log("el usuario no acepto las notificaciones")
+        })
+    })
+    ///////////////////////////////////////////////////////////////////////////////
+    
+    ///// modelo de notificacion //////////////////////////////////////////////////
+    messaging.onMessage(function(payload){
+        let titulo = payload.notification.title
+        let opciones = {
+            body: payload.notification.body,
+            icon: payload.notification.icon
+        }
+        let mensaje = new Notification(titulo,opciones)
+    })
+    
+
+    ///////////////////////////////////////////////////////////////////////////////
+    </script>
 </head>
 <body>
     <div id="contenedor">
@@ -28,6 +102,7 @@
                         <a href="{% url 'FORM' %}"> REGISTRATE </a>
                         <a href="{% url 'LOGIN' %}">INICIAR SESIÓN</a>
                     {% endif %}
+                    <a href="{% url 'social:begin' 'facebook' %}">Login con facebook</a>
                 </nav>
             <div><h3 class="eslogan"> "QUEREMOS QUE BRILLES COMO TU AUTO" </h3></div>
         </div>       
@@ -51,6 +126,7 @@
                         <a href="{% url 'FORM' %}"> REGISTRATE </a>
                         <a href="{% url 'LOGIN' %}">INICIAR SESIÓN</a>
                     {% endif %}
+                    <a href="{% url 'social:begin' 'facebook' %}">Login con facebook</a>
                 </nav>
             </div>
             <div id="contactos">

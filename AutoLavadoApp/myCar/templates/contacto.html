@@ -1,0 +1,34 @@
+{% extends "plantilla.html" %}
+{% load static %}
+{% block estilos %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+{% endblock estilos %}
+{% block contenido %}
+<div id=contenedor-contacto>
+    <div><h1 id="sub_contacto"> "FORMULARIO DE CONTACTO" </h1></div>
+    <tr>
+        <td> Nombre:</td>
+        <td><input type="text" name="txtNContacto" id="txtNContacto" minlength="3" maxlength="50"></td>
+    </tr>
+    <tr>
+        <td> Apellido:</td>
+        <td><input type="text" name="txtAContacto" id="txtAContacto" minlength="3" maxlength="50"></td>
+    </tr>
+    <tr>
+        <td> Asunto:</td>
+        <td><input type="text" name="txtAsunto" id="txtAsunto" minlength="8" maxlength="50"></td>
+    </tr>
+    <tr>
+        <td> Tipo de contacto:</td>
+        <select name="Tipo Contacto" id="tipocontacto">
+            <option value="solicitud">Solicitud</option>
+            <option value="reclamo">Reclamo</option>
+            <option value="sugerencia">Sugerencia</option>
+        </select>
+    </tr>
+    <tr>
+        <td> Mensaje:</td>
+        <td><input type="text" name="txtmensaje" id="txtmensaje" minlength="10" maxlength="200"></td>
+    </tr>
+</div>
+{% endblock contenido %}
